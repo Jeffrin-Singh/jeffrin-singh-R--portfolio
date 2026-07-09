@@ -1503,10 +1503,11 @@
                         </p>
                         <div class="about-pills">
                             <span class="pill">Python</span>
+                            <span class="pill">YOLO</span>
                             <span class="pill">FastAPI</span>
                             <span class="pill">React</span>
                             <span class="pill">PostgreSQL</span>
-                            <span class="pill">OpenCV</span>
+                            <span class="pill">PaddleOCR</span>
                             <span class="pill">Docker</span>
                             <span class="pill">Git</span>
                         </div>
@@ -1523,26 +1524,28 @@
                 <div class="exp-list">
 
                     <div class="exp-item reveal">
-                        <div class="exp-date">Feb 2026 — Present</div>
+                        <div class="exp-date">Feb 2026 — Apr 2026</div>
                         <div>
-                            <div class="exp-role">Full Stack Developer</div>
-                            <div class="exp-company">Invendoi AI Solutions</div>
+                            <div class="exp-role">AI Engineer Intern</div>
+                            <div class="exp-company">Invendoi AI Solutions · Kochi, India</div>
                             <ul class="exp-desc" style="list-style:disc;padding-left:1rem;">
-                                <li>Built enterprise web platforms using React and Vite with scalable architecture</li>
-                                <li>Developed real-time face recognition systems for VSSC-related environments and
-                                    security applications</li>
-                                <li>Implemented Automatic Number Plate Recognition (ANPR) for Tamil Nadu Forest
-                                    Department vehicle monitoring use cases</li>
-                                <li>Worked on computer vision pipelines, model integration, and real-time processing
-                                </li>
-                                <li>Gained hands-on experience in machine learning, including face recognition and
-                                    object detection systems</li>
+                                <li>Built a real-time Automatic Number Plate Recognition (ANPR) system using YOLO,
+                                    ByteTrack, and PaddleOCR on live video streams, enabling automated vehicle
+                                    tracking with minimized duplicate detections across multi-camera setups</li>
+                                <li>Optimised the inference pipeline with ONNX Runtime, reducing per-frame latency by
+                                    approximately 30% and achieving approximately 20 FPS on 720p streams for real-time
+                                    production surveillance deployment</li>
+                                <li>Developed and deployed three production-grade platforms used by real users:
+                                    Invendoi (React, Vercel, Supabase), Invendo AI Academy (React, Vercel, Render,
+                                    Supabase, Gemini API-powered AI chatbot), and Campus Platform (HTML, CSS,
+                                    JavaScript)</li>
                             </ul>
                             <div class="exp-tags">
+                                <span class="exp-tag">YOLO</span>
+                                <span class="exp-tag">ByteTrack</span>
+                                <span class="exp-tag">PaddleOCR</span>
+                                <span class="exp-tag">ONNX Runtime</span>
                                 <span class="exp-tag">React</span>
-                                <span class="exp-tag">Vite</span>
-                                <span class="exp-tag">Tailwind CSS</span>
-                                <span class="exp-tag">Node.js</span>
                             </div>
                         </div>
                     </div>
@@ -1775,6 +1778,32 @@
                         </a>
                     </div>
                     <div class="project-card reveal">
+                        <div class="card-icon">🧾</div>
+                        <h4 class="card-h4">AI Document Intelligence System</h4>
+                        <p class="card-desc">
+                            Built an end-to-end OCR pipeline for images and multi-page PDFs using PaddleOCR
+                            (PP-OCRv4 detector and recognizer) with automatic GPU/CPU fallback, reading-order
+                            reconstruction, and text normalization, exporting structured JSON, normalized JSON, and
+                            plain-text outputs. Extended it with a vision-language grounding module
+                            (nvidia/LocateAnything-3B) to locate elements such as logos, signatures, stamps, and
+                            tables via free-text queries, plus a Tkinter GUI orchestrating both pipelines with live
+                            progress and performance logging.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tag">PaddleOCR</span>
+                            <span class="tag">PyMuPDF</span>
+                            <span class="tag">Vision-Language Models</span>
+                            <span class="tag">Tkinter</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <a class="learn-more" href="#" target="_blank">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">View Project</span>
+                        </a>
+                    </div>
+                    <div class="project-card reveal">
                         <div class="card-icon">📂</div>
                         <h4 class="card-h4">Multi-Platform Document Collection System</h4>
                         <p class="card-desc">
@@ -1923,6 +1952,7 @@
                             <li>HTML5 / CSS3</li>
                             <li>Tailwind CSS</li>
                             <li>Vite</li>
+                            <li>JavaScript</li>
                         </ul>
                     </div>
                     <div class="skill-card reveal reveal-delay-1">
@@ -1932,6 +1962,7 @@
                             <li>FastAPI</li>
                             <li>Flask</li>
                             <li>RESTful APIs</li>
+                            <li>WebSockets</li>
                             <li>Python</li>
                         </ul>
                     </div>
@@ -1940,16 +1971,20 @@
                         <div class="skill-cat">Database</div>
                         <ul class="skill-items">
                             <li>PostgreSQL</li>
+                            <li>MySQL</li>
                             <li>SQL Server</li>
-                            <li>Redis</li>
+                            <li>Supabase</li>
                         </ul>
                     </div>
                     <div class="skill-card reveal reveal-delay-3">
                         <div class="skill-icon">🤖</div>
                         <div class="skill-cat">AI / ML</div>
                         <ul class="skill-items">
-                            <li>OpenCV</li>
+                            <li>YOLO</li>
                             <li>InsightFace</li>
+                            <li>OpenCV</li>
+                            <li>ByteTrack</li>
+                            <li>PaddleOCR / EasyOCR</li>
                             <li>ONNX Runtime</li>
                         </ul>
                     </div>
