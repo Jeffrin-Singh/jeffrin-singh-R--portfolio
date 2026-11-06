@@ -1,1 +1,24 @@
+# Secrets (API keys)
+.env
+.env.local
+.env.*.local
+requirment_data.txt
+
+# Supabase CLI local state
+supabase/.branches/
+supabase/.temp/
+
+# Dependencies and build output
+node_modules/
+dist/
+
+# Not part of the site
 agent-skills-main/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

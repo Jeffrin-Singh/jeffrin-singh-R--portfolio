@@ -1,0 +1,10 @@
+# Supabase configuration
+[project]
+project_id = "hvpmyexizyoneahfkrbn"
+
+[api]
+enabled = true
+max_body_size = "10485760"
+
+[functions.chat]
+verify_jwt = false

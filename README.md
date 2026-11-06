@@ -22,13 +22,14 @@ I build **production AI systems and web platforms**. My current focus is **Pytho
 | | Feature | What it does |
 |---|---|---|
 | 🪟 | **Glass UI** | Frosted surfaces, a floating navigation pill and cursor-follow light on cards |
+| 🤖 | **AI Chatbot** | Floating chat widget powered by Gemini API, answers questions about experience and skills |
 | 🌀 | **WebGL intro** | A liquid-glass background with a shine-animated loader and progress bar, for 1.5 seconds |
 | ✍️ | **Word reveals** | Headlines animate word by word as you scroll |
 | 🔁 | **Scroll motion** | Sections animate in every time you scroll back to them |
 | 🛰️ | **Hero visual** | Rotating rings and a soft colour blob, with parallax on scroll |
 | 📱 | **Responsive** | Works on phones, tablets and desktops, with a mobile menu |
 | ♿ | **Accessible** | Keyboard focus styles, semantic landmarks and reduced-motion support |
-| ⚡ | **Zero build** | One `index.html` file with no build step |
+| ⚡ | **Zero build** | One `index.html` file with no build step (frontend only) |
 
 ## 🧰 Tech Stack
 
@@ -39,6 +40,12 @@ I build **production AI systems and web platforms**. My current focus is **Pytho
   <img src="https://img.shields.io/badge/WebGL-990000?style=for-the-badge&logo=webgl&logoColor=white" alt="WebGL" />
   <img src="https://img.shields.io/badge/Google_Fonts-4285F4?style=for-the-badge&logo=googlefonts&logoColor=white" alt="Google Fonts" />
   <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel" />
+</p>
+
+<p align="left">
+  <img src="https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white" alt="Supabase" />
+  <img src="https://img.shields.io/badge/Gemini_API-8F7EFF?style=for-the-badge&logo=google&logoColor=white" alt="Gemini API" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
 </p>
 
 <p align="left">
@@ -85,14 +92,28 @@ python -m http.server 8000
 ├── Jeffrin_Singh_R_Resume.pdf  # Downloadable resume
 ├── assets/
 │   └── banner.svg              # README banner
-├── agent-skills-main/          # Agent skill files (not used by the site)
-├── .gitignore
+├── supabase/
+│   ├── config.toml             # Supabase project config
+│   └── functions/
+│       └── chat/
+│           └── index.ts        # Edge Function: chatbot handler
+├── .env.example                # Template for local env variables
+├── .gitignore                  # Keeps secrets and local files out of git
+├── CHATBOT_SETUP.md            # Step-by-step chatbot setup guide
 └── README.md
 ```
 
+Ignored by git (local only): `.env`, `.env.local`, `requirment_data.txt`, `supabase/.temp/`, `agent-skills-main/`, and OS/editor files.
+
+## 🔐 Secrets
+
+- The **Gemini API key** lives only in Supabase secrets (`supabase secrets set`). It is never in `index.html` or the repo.
+- The **Supabase publishable key** in `index.html` is public by design.
+- Keep local keys in `.env.local` (copy from `.env.example`). Never commit real keys.
+
 ## 🎨 Customising
 
-All content lives in `index.html`:
+### Frontend (index.html)
 
 - **Hero:** the `<section id="hero">` block.
 - **Experience:** `<section id="experience">`. Each role is a `.job` item.
@@ -101,14 +122,55 @@ All content lives in `index.html`:
 - **Colours and type:** the `:root` variables at the top of the `<style>` block.
 - **Loader timing:** the `1500` value in the intro script, in milliseconds.
 - **Resume:** replace `Jeffrin_Singh_R_Resume.pdf` with a new file of the same name.
+- **Chatbot:** the `.chatbot-widget` at the end of `<body>`. Edit the styles with `.chatbot-*` classes.
+
+### Backend (supabase/functions/chat/index.ts)
+
+- **Knowledge:** edit the `SYSTEM_PROMPT` constant to update what the chatbot knows about you.
+- **Models:** `MODELS` lists Gemini models tried in order (default `gemini-3.5-flash-lite`, then fallbacks). If one is busy, slow or retired, the next is used.
+- **Timeout:** `MODEL_TIMEOUT_MS` (default 20 s) per model, so a slow model can't hang the request.
+- **Temperature:** adjust `temperature: 0.7` (0–1) for creativity vs. consistency.
+
+Redeploy after any change: `supabase functions deploy chat`.
 
 ## 🌐 Deploy
+
+### Frontend (Vercel)
 
 The site is static, so any static host works. On Vercel:
 
 1. Push the repository to GitHub.
 2. Import it in Vercel.
 3. Keep the framework preset as **Other**, then deploy. No build command is needed.
+
+### Backend (Supabase Edge Function)
+
+To enable the chatbot feature:
+
+1. **Install Supabase CLI:**
+   ```bash
+   npm install -g supabase
+   ```
+
+2. **Link your project:**
+   ```bash
+   supabase link --project-ref hvpmyexizyoneahfkrbn
+   ```
+
+3. **Set environment variables:**
+   ```bash
+   supabase secrets set GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+   ```
+
+4. **Deploy the function:**
+   ```bash
+   supabase functions deploy chat
+   ```
+
+5. Verify the function is live at:
+   ```
+   https://hvpmyexizyoneahfkrbn.supabase.co/functions/v1/chat
+   ```
 
 ## 📬 Contact
 
